@@ -12,7 +12,8 @@ export class AppNavShellComponent implements OnInit {
 
   constructor(private breakPointObserver: BreakpointObserver) {}
   
-  isHandset$: Observable<boolean> = this.breakPointObserver.observe([Breakpoints.Handset])
+  // Listen to the window view port width by setting a break point observer 
+  handset$: Observable<boolean> = this.breakPointObserver.observe([Breakpoints.Handset])
     .pipe(
       map(_ => _.matches),
       shareReplay()

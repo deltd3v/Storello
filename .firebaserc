@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "storello-5f13e": {
+      "hosting": {
+        "storello-board": [
+          "storello-5f13e"
+        ]
+      }
+    }
+  }
+}

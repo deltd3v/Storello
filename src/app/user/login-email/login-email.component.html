@@ -1,0 +1,97 @@
+<mat-card>
+ 
+    
+    <form *ngIf="isResetFormType" [formGroup]="resetForm" (ngSubmit)="onFormSubmit()">
+      <h1 style="margin:1.5rem 0rem">Reset </h1>
+
+      <mat-form-field (color)="resetEmail?.valid && 'accent'">
+        <input matInput type="email" placeholder="@email" formControlName="email" autocomplete="off">
+        <mat-error *ngIf="resetEmail?.invalid && resetEmail?.dirty">Please provide a valid email address</mat-error>
+      </mat-form-field>
+
+      <button mat-button mat-raised-button color="accent" type="submit" [disabled]="resetForm.invalid || isLoading">
+        submit
+      </button>
+
+
+    <mat-error class="server-error">{{ serverMessage }}</mat-error>
+
+      <section *ngIf="isResetFormType" style="margin: 1.5rem 0rem;display:flex;flex-direction: column; align-items:center">
+        <span>Remember Password ?</span><br/>
+        <button size="small" mat-button (click)="changeFormType('log-in')">Log In</button>
+      </section>
+      
+
+    </form>
+    
+    <form *ngIf="isLogInFormType" [formGroup]="logInForm" (ngSubmit)="onFormSubmit()">
+        <h1 style="margin:1.5rem 0rem">Log In</h1>
+        <mat-form-field (color)="logInEmail?.valid && 'accent'">
+          <input matInput type="email" placeholder="@email" formControlName="email" autocomplete="off">
+          <mat-error *ngIf="logInEmail?.invalid && logInEmail?.dirty">Please provide a valid email address</mat-error>
+        </mat-form-field>
+        
+        <mat-form-field [color]="logInEmail?.valid && 'accent'">
+          <input matInput formControlName="password" type="password" placeholder="password" autocomplete="off">
+          <mat-error *ngIf="logInPassword?.invalid && logInPassword?.dirty"> The password should be atleast 6 characters long</mat-error>
+        </mat-form-field>
+        
+        <button mat-button mat-raised-button color="accent" type="submit" [disabled]="logInForm.invalid || isLoading">
+          submit
+        </button>
+    
+        
+        <section *ngIf="isLogInFormType" style="margin: 1.5rem 0rem;display:flex;flex-direction: column; align-items:center">
+          <span>Forgot Password ?</span><br />
+          <button size="small" mat-button (click)="changeFormType('reset')" style="display:inline-block;">
+            Reset 
+          </button>
+        </section>
+      
+    
+        <section *ngIf="isLogInFormType" style="margin:1.5rem 0rem">
+          <span>Don't have an account ?</span><br />
+          <button size="small" mat-button (click)="changeFormType('sign-up')" style="display:inline-block;">
+            Sign Up
+          </button>
+        </section>
+             
+    </form>
+      
+    
+    <form *ngIf="isSignUpFormType" [formGroup]="signUpForm" (ngSubmit)="onFormSubmit()">
+      <h1 style="margin:1.5rem 0rem">Create Account</h1>
+      
+      <mat-form-field (color)="signUpEmail?.valid && 'accent'">
+        <input matInput type="email" placeholder="@email" formControlName="email" autocomplete="off">
+        <mat-error *ngIf="signUpEmail?.invalid && signUpEmail?.dirty">Please provide a valid email address</mat-error>
+      </mat-form-field>
+      
+      <mat-form-field [color]="signUpEmail?.valid && 'accent'" *ngIf="!isResetFormType">
+        <input matInput formControlName="password" type="password" placeholder="password" autocomplete="off">
+        <mat-error *ngIf="signUpPassword?.invalid && signUpPassword?.dirty"> The password should be atleast 6 characters long</mat-error>
+      </mat-form-field>
+      
+      <mat-form-field [color]="passwordMatches ? 'accent' : 'warn'" *ngIf="isSignUpFormType">
+        <input matInput type="password" formControlName="passwordConfirmation" placeholder="confirm password" autocomplete="off">
+        <mat-error *ngIf="signUpPasswordConfirmation?.dirty && !passwordMatches">Passwords don't match</mat-error>
+      </mat-form-field>
+    
+      <button mat-button mat-raised-button color="accent" type="submit" [disabled]="signUpForm.invalid || !passwordMatches || isLoading">
+        submit
+      </button>
+    
+
+      <section *ngIf="isSignUpFormType" style="margin: 1.5rem 0rem;display:flex;flex-direction: column; align-items:center">
+        <span>Already have an account ? </span><br />
+        <button mat-button (click)="changeFormType('log-in')" style="display:inline-block;">
+            Log In
+        </button>
+      </section>
+
+      
+    </form>
+
+   
+
+</mat-card>

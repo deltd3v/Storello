@@ -1,78 +1,91 @@
-<mat-sidenav-container class=".sidenav-container mat-typography app-frame mat-app-background" fxLayout="column">
+<mat-sidenav-container class="sidenav-container mat-typography app-frame mat-app-background" fxLayout="column">
+   <!-- ::APP_SIDE_NAV::-->
     <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [attr.role]="(handset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(handset$ | async) ? 'over' : 'side'"
       [opened]="false">
     <mat-toolbar>Menu</mat-toolbar>
+    
     <mat-nav-list>
-     
-      <a mat-list-item routerLink="/" (click)="drawer.close()">Home</a>
-      <a mat-list-item routerLink="/login" (click)="drawer.close()">Login</a>
-      <a mat-list-item routerLink="/board" (click)="drawer.close()">Board</a>
-      <a mat-list-item routerLink="/stories" (click)="drawer.close()">Stories</a>
- 
+      <a mat-list-item routerLink="/" (click)="drawer.close()" style="display:flex;align-items:center">
+        <mat-icon style="margin:0 0.5rem"  aria-label="home-icon">home</mat-icon> 
+        <span>Home</span> 
+      </a>
+      <a mat-list-item routerLink="/login" (click)="drawer.close()"  style="display:flex;align-items:center">
+         <mat-icon style="margin:0 0.5rem"  aria-label="login-icon">login</mat-icon>
+         <span> Login </span> 
+      </a>
+      <a mat-list-item routerLink="/board" (click)="drawer.close()"  style="display:flex;align-items:center">
+         <mat-icon style="margin:0 0.5rem" aria-label="board-icon">view_agenda</mat-icon>
+         <span>Board</span>
+       </a>
+      <a mat-list-item routerLink="/stories" (click)="drawer.close()"  style="display:flex;align-items:center">
+        <mat-icon style="margin:0 0.5rem" aria-label="stories-icon">amp_stories</mat-icon>
+        <span> Stories</span>
+      </a>
     </mat-nav-list>
+
   </mat-sidenav>
+
   <mat-sidenav-content>
+
     <mat-toolbar>
-      <button 
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
+        <button 
+            type="button"
+            aria-label="Toggle sidenav"
+            mat-icon-button
+            (click)="drawer.toggle()"
+            *ngIf="handset$ | async">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
 
-
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <section style="display:flex;align-items:center">
-
-          <img width="20" src="assets/logo.svg" alt="storello-logo" style="margin:0rem 0.5rem">
-          <span class="logo" routerLink="/">
-            Storello Board</span>
+        <section style="display:flex;align-items:center">
+            <img width="20" src="assets/logo.svg" alt="storello-logo" style="margin:0rem 0.5rem">
+            <span class="logo" routerLink="/">
+              Storello Board</span>
         </section>
-        
+          
         <span class="fill-space"></span>
-        <div *ngIf="!(isHandset$ | async)">
-            <a mat-button routerLink="/board">🍱 Board</a>
-            <a mat-button routerLink="/stories">⚡ Stories</a>
-            
-            <!-- If the user is not logged in, display a link to redirect them to a login option -->
-            <!--
-                <a mat-button routerLink="/login" *ngIf="!(fAuth.authState | async)">🔑 Login</a>
-            -->
-            <!-- If the user is logged in, display the profile picture -->
-            <!--
-            <a mat-button routerLink="/login" *ngIf="afAuth.authState | async as user" >
-                <img class="avatar" [src]="user.photoURL || 'assets/default-user.svg'">
-                Profile
+
+        <div *ngIf="!(handset$ | async)">
+            <a mat-button routerLink="/board">
+              <mat-icon style="margin:0 0.5rem" aria-label="board-icon">view_agenda</mat-icon>
+              <span>Board</span>
             </a>
-            -->
+            <a mat-button routerLink="/login">
+              <mat-icon style="margin:0 0.5rem"  aria-label="login-icon">login</mat-icon>
+              <span> Login </span> 
+            </a>
+            <a mat-button routerLink="/stories">
+              <mat-icon style="margin:0 0.5rem" aria-label="stories-icon">amp_stories</mat-icon>
+              <span> Stories</span>
+            </a>
         </div>
         
         <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-            <mat-icon>more_vert</mat-icon>
+            <mat-icon>expand_more</mat-icon>
         </button>
         
         <mat-menu #menu="matMenu">
-            <a mat-menu-item href="https://www.instagram.com/delt_i/">
-                <!-- 
-                    <i>💬</i>
-                --> 
-                <img width="20" src="assets/instagram-icon.png" alt="instagram-logo" style="margin:0rem 0.5rem">
-                <span>Chat on Instagram</span>
-            </a>
             
-            <a mat-menu-item href="https://github.com/deltd3v/storello-board">
-                <!-- 
-                    <i>💾</i>
-                --> 
-                <img width="20" src="assets/github-icon.svg" alt="github-logo" style="margin:0rem 0.5rem">
-            
-          <span>Code on Github</span>
-        </a>
-     
+          <a mat-menu-item routerLink="/about" style="display:flex;align-items:center">
+            <mat-icon>info</mat-icon>
+            <span>About</span>
+          </a>
+
+          <a mat-menu-item routerLink="/chat" style="display:flex;align-items:center">
+            <mat-icon>chat_bubble</mat-icon>
+            <span>Chat</span>
+          </a>
+          
+          <a mat-menu-item target="_blank" href="https://github.com/deltd3v/storello-board" style="display:flex;align-items:center">
+            <mat-icon>code</mat-icon>
+            <span>Code on Github</span>
+          </a>
+          
+           
       </mat-menu>
+
     </mat-toolbar>
 
     <ng-content></ng-content>
