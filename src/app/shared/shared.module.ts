@@ -14,8 +14,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { AppNavShellComponent } from './app-nav-shell/app-nav-shell.component';
+import { DeleteBtnComponent } from './delete-btn/delete-btn.component';
 
-export const SHARED_COMPONENTS = [AppNavShellComponent];
+export const SHARED_COMPONENTS = [DeleteBtnComponent,AppNavShellComponent];
 
 
 export const SHARED_MODULES = [

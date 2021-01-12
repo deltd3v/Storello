@@ -10,6 +10,7 @@ import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
 import { HomePageComponent } from './home-page/home-page.component';
+
 console.clear()
 @NgModule({
   declarations: [
