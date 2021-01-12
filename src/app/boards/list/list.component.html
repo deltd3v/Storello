@@ -5,6 +5,7 @@
 	(cdkDropListDropped)="drop($event)"
 >
 	<app-board cdkDrag *ngFor="let board of boards" [board]="board">
+		<!-- ::BOARD_CARD_FOOTER:: -->
 		<mat-icon cdkDragHandle class="handle">drag_indicator</mat-icon>
 	</app-board>
 
