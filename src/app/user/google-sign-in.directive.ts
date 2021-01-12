@@ -1,6 +1,6 @@
-import { Directive, HostListener } from "@angular/core";
-import { AngularFireAuth } from "@angular/fire/auth";
-import * as fireBase from "firebase/app";
+import {Directive, HostListener} from '@angular/core';
+import {AngularFireAuth} from '@angular/fire/auth';
+import * as fireBase from 'firebase/app';
 
 /**
  * <3
@@ -12,16 +12,16 @@ import * as fireBase from "firebase/app";
  */
 
 @Directive({
-  selector: "[appGoogleSignIn]",
+	selector: '[appGoogleSignIn]',
 })
 export class GoogleSignInDirective {
-  constructor(private angularFireAuth: AngularFireAuth) {}
+	constructor(private angularFireAuth: AngularFireAuth) {}
 
-  // listen for a click on the <element appGoogleSignIn />
-  @HostListener("click")
-  onclick() {
-    this.angularFireAuth.signInWithPopup(
-      new fireBase.default.auth.GoogleAuthProvider()
-    );
-  }
+	// listen for a click on the <element appGoogleSignIn />
+	@HostListener('click')
+	onclick() {
+		this.angularFireAuth.signInWithPopup(
+			new fireBase.default.auth.GoogleAuthProvider()
+		);
+	}
 }

@@ -1,22 +1,26 @@
 <main class="log-in-screen">
-  <div *ngIf="!(angularFireAuth.authState | async)">
-    <h1 style="margin: 1.5rem 0rem">Login</h1>
+	<div *ngIf="!(angularFireAuth.authState | async)">
+		<h1 style="margin: 1.5rem 0rem">Login</h1>
 
-    <button mat-raised-button appGoogleSignIn>
-      <img src="assets/google-icon.svg" alt="google icon" style="width: 10" />
-      SIGN IN
-    </button>
+		<button mat-raised-button appGoogleSignIn>
+			<img
+				src="assets/google-icon.svg"
+				alt="google icon"
+				style="width: 10"
+			/>
+			SIGN IN
+		</button>
 
-    <h2 style="margin: 2.5rem 0rem">OR</h2>
+		<h2 style="margin: 2.5rem 0rem">OR</h2>
 
-    <app-login-email></app-login-email>
-  </div>
+		<app-login-email></app-login-email>
+	</div>
 
-  <div class="log-out" *ngIf="angularFireAuth.authState | async as user">
-    <pre>Signed in with google</pre>
-    <h6>{{ user.email }}</h6>
-    <button mat-stroked-button (click)="angularFireAuth.signOut()">
-      Sign Out
-    </button>
-  </div>
+	<div class="log-out" *ngIf="angularFireAuth.authState | async as user">
+		<pre>Signed in with google</pre>
+		<h6>{{ user.email }}</h6>
+		<button mat-stroked-button (click)="angularFireAuth.signOut()">
+			Sign Out
+		</button>
+	</div>
 </main>

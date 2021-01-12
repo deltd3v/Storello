@@ -1,43 +1,43 @@
-import { Injectable } from "@angular/core";
+import {Injectable} from '@angular/core';
 import {
-  CanActivate,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot,
-} from "@angular/router";
-import { AngularFireAuth } from "@angular/fire/auth";
-import { SnackService } from "../services/snack.service";
+	CanActivate,
+	ActivatedRouteSnapshot,
+	RouterStateSnapshot,
+} from '@angular/router';
+import {AngularFireAuth} from '@angular/fire/auth';
+import {SnackService} from '../services/snack.service';
 
 @Injectable({
-  providedIn: "root",
+	providedIn: 'root',
 })
 export class AuthGuard implements CanActivate {
-  constructor(
-    private angularFireAuth: AngularFireAuth,
-    private snackService: SnackService
-  ) {}
+	constructor(
+		private angularFireAuth: AngularFireAuth,
+		private snackService: SnackService
+	) {}
 
-  async canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Promise<boolean> {
-    let user = await this.angularFireAuth.currentUser;
+	async canActivate(
+		next: ActivatedRouteSnapshot,
+		state: RouterStateSnapshot
+	): Promise<boolean> {
+		let user = await this.angularFireAuth.currentUser;
 
-    const isLoggedIn = !!user;
+		const isLoggedIn = !!user;
 
-    if (isLoggedIn) {
-      localStorage.setItem("user", JSON.stringify(user));
-      return isLoggedIn;
-    }
+		if (isLoggedIn) {
+			localStorage.setItem('user', JSON.stringify(user));
+			return isLoggedIn;
+		}
 
-    if (!isLoggedIn) {
-      user = JSON.parse(localStorage.getItem("user")!);
+		if (!isLoggedIn) {
+			user = JSON.parse(localStorage.getItem('user')!);
 
-      if (!user) {
-        this.snackService.showAuthRequiredError();
-        return false;
-      }
-    }
+			if (!user) {
+				this.snackService.showAuthRequiredError();
+				return false;
+			}
+		}
 
-    return isLoggedIn;
-  }
+		return isLoggedIn;
+	}
 }

@@ -1,11 +1,11 @@
 <!-- ::CLICK_BUTTON_TWICE_TO_CONFIRM_AND_DELETE:: -->
 <button
-  mat-button
-  color="accent"
-  (click)="shouldDelete ? deleTe() : prepareDelete()"
+	mat-button
+	color="accent"
+	(click)="shouldDelete ? deleTe() : prepareDelete()"
 >
-  <mat-icon>delete</mat-icon>
-  <span *ngIf="shouldDelete">confirm</span>
+	<mat-icon>delete</mat-icon>
+	<span *ngIf="shouldDelete">confirm</span>
 </button>
 
 <button *ngIf="shouldDelete" mat-button (click)="cancelDelete()">Cancel</button>

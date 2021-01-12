@@ -1,47 +1,47 @@
 .outer-card {
-  margin: 10px;
-  min-width: 300px;
-  max-width: 300px;
-  padding: 10px;
-  background: #212121;
+	margin: 10px;
+	min-width: 300px;
+	max-width: 300px;
+	padding: 10px;
+	background: #212121;
 }
 
 .inner-card {
-  margin: 5px 0;
-  cursor: pointer;
+	margin: 5px 0;
+	cursor: pointer;
 }
 
 .cdk-drag-animating {
-  transition: transform 300ms ease;
+	transition: transform 300ms ease;
 }
 
 .tasks.cdk-drop-list-dragging .cdk-drag {
-  transition: transform 300ms ease;
+	transition: transform 300ms ease;
 }
 
 .cdk-drag-placeholder {
-  opacity: 0.5;
+	opacity: 0.5;
 }
 
 .red {
-  background: #e74a4a;
+	background: #e74a4a;
 }
 .purple {
-  background: #b15cff;
+	background: #b15cff;
 }
 .blue {
-  background: #71deff;
-  color: black;
+	background: #71deff;
+	color: black;
 }
 .green {
-  background: #36e9b6;
-  color: black;
+	background: #36e9b6;
+	color: black;
 }
 .yellow {
-  background: #ffcf44;
-  color: black;
+	background: #ffcf44;
+	color: black;
 }
 .gray {
-  background: gray;
-  text-decoration: line-through;
+	background: gray;
+	text-decoration: line-through;
 }
