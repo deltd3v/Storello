@@ -1,16 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { BoardDialogComponent } from './board-dialog.component';
+import { BoardDialogComponent } from "./board-dialog.component";
 
-describe('BoardDialogComponent', () => {
+describe("BoardDialogComponent", () => {
   let component: BoardDialogComponent;
   let fixture: ComponentFixture<BoardDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ BoardDialogComponent ]
-    })
-    .compileComponents();
+      declarations: [BoardDialogComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('BoardDialogComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

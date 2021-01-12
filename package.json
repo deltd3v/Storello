@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "format":"prettier --write 'src/**/**/**/**/*.{ts,js,md,json,html,scss,css}' --config .prettierrc.json --ignore-path .prettierignore"
   },
   "private": true,
   "dependencies": {
@@ -28,6 +29,7 @@
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
+    "prettier": "^2.2.1",
     "@angular-devkit/build-angular": "~0.1100.6",
     "@angular/cli": "~11.0.6",
     "@angular/compiler-cli": "~11.0.6",

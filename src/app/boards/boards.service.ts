@@ -1,18 +1,18 @@
-import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { AngularFirestore } from '@angular/fire/firestore';
-import  firebase from 'firebase/app';
-import { switchMap, map } from 'rxjs/operators';
-import {   boardI,  tasksI  } from './boards.model';
+import { Injectable } from "@angular/core";
+import { AngularFireAuth } from "@angular/fire/auth";
+import { AngularFirestore } from "@angular/fire/firestore";
+import firebase from "firebase/app";
+import { switchMap, map } from "rxjs/operators";
+import { boardI, tasksI } from "./boards.model";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class BoardService {
   constructor(
     private angularFireAuth: AngularFireAuth,
-    private angularFireStore: AngularFirestore)
-  {}
+    private angularFireStore: AngularFirestore
+  ) {}
 
   /**
    * Create a new board for the user
@@ -20,10 +20,10 @@ export class BoardService {
   async createBoard(data: boardI) {
     const user = await this.angularFireAuth.currentUser;
 
-    return this.angularFireStore.collection('boards').add({
+    return this.angularFireStore.collection("boards").add({
       ...data,
       uid: user!.uid,
-      tasks: []
+      tasks: [],
     });
   }
 
@@ -32,28 +32,28 @@ export class BoardService {
    */
   readBoards() {
     return this.angularFireAuth.authState.pipe(
-      switchMap(user => {
+      switchMap((user) => {
         if (user) {
           return this.angularFireStore
-            .collection<boardI>('boards', ref =>
-              ref.where('uid', '==', user.uid).orderBy('no')
+            .collection<boardI>("boards", (ref) =>
+              ref.where("uid", "==", user.uid).orderBy("no")
             )
-            .valueChanges({ idField: 'id' });
+            .valueChanges({ idField: "id" });
         } else {
           return [];
         }
       })
     );
   }
-  
+
   /**
    * Update task on the board
    */
   updateTasks(boardId: string, tasks: tasksI[]) {
     return this.angularFireStore
-    .collection('boards')
-    .doc(boardId)
-    .update({ tasks });
+      .collection("boards")
+      .doc(boardId)
+      .update({ tasks });
   }
 
   /**
@@ -62,7 +62,9 @@ export class BoardService {
   orderBoards(boards: boardI[]) {
     const store = firebase.firestore();
     const batch = store.batch();
-    const refs = boards.map(board => store.collection('boards').doc(board.id));
+    const refs = boards.map((board) =>
+      store.collection("boards").doc(board.id)
+    );
     refs.forEach((ref, idx) => batch.update(ref, { no: idx }));
     batch.commit();
   }
@@ -72,21 +74,20 @@ export class BoardService {
    */
   async deleteBoard(boardId: string) {
     return await this.angularFireStore
-      .collection('boards')
+      .collection("boards")
       .doc(boardId)
       .delete();
   }
-  
 
   /**
    * Remove a specifc task from the board
    */
   deleteTask(boardId: string, task: tasksI) {
     return this.angularFireStore
-      .collection('boards')
+      .collection("boards")
       .doc(boardId)
       .update({
-        tasks: firebase.firestore.FieldValue.arrayRemove(task)
+        tasks: firebase.firestore.FieldValue.arrayRemove(task),
       });
   }
 }

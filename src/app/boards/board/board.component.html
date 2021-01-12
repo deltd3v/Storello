@@ -1,33 +1,47 @@
 <mat-card class="outer-card">
-    <mat-card-header>
-      <!-- Slot for the handle -->
-      <ng-content></ng-content>
-      <mat-card-title>
-        {{ board.title }}
-      </mat-card-title>
-      <mat-card-subtitle>
-        {{ board.id }}
-      </mat-card-subtitle>
-    </mat-card-header>
-  
+  <mat-card-header>
+    <mat-card-title>
+      {{ board.title }}
+    </mat-card-title>
+    <!-- 
+        <mat-card-subtitle>
+          {{ board.id }}
+        </mat-card-subtitle>
+      -->
+  </mat-card-header>
+
+  <div
+    class="tasks"
+    cdkDropList
+    cdkDropListOrientation="vertical"
+    (cdkDropListDropped)="dropTask($event)"
+  >
     <div
-      class="tasks"
-      cdkDropList
-      cdkDropListOrientation="vertical"
-      (cdkDropListDropped)="dropTask($event)"
+      class="inner-card"
+      cdkDrag
+      *ngFor="let task of board!.tasks!; let i = index"
+      (click)="toggleDialog(task, i)"
     >
-    <div 
-        class="inner-card"
-        cdkDrag
-        *ngFor="let task of board.tasks; let i = index" (click)="toggleDialog(task, i)">
-          <mat-card [ngClass]="task.label"> 
-            {{ task.description }} 
-          </mat-card>
+      <mat-card [ngClass]="task!.label!">
+        {{ task!.description }}
+      </mat-card>
     </div>
-  
-      <button mat-stroked-button (click)="toggleDialog()">
-        <mat-icon>add</mat-icon>
-      </button>  
-      <app-delete-btn (delete)="onDeleteBoard()"></app-delete-btn>    
-    </div>
-  </mat-card>
+
+    <section
+      style="
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      "
+    >
+      <section>
+        <button mat-stroked-button (click)="toggleDialog()">
+          <mat-icon>add</mat-icon>
+        </button>
+        <app-delete-btn (delete)="onDeleteBoard()"></app-delete-btn>
+      </section>
+      <ng-content></ng-content>
+    </section>
+  </div>
+</mat-card>

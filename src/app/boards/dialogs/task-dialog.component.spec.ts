@@ -1,16 +1,15 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { TaskDialogComponent } from './task-dialog.component';
+import { TaskDialogComponent } from "./task-dialog.component";
 
-describe('TaskDialogComponent', () => {
+describe("TaskDialogComponent", () => {
   let component: TaskDialogComponent;
   let fixture: ComponentFixture<TaskDialogComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TaskDialogComponent ]
-    })
-    .compileComponents();
+      declarations: [TaskDialogComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -19,7 +18,7 @@ describe('TaskDialogComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
