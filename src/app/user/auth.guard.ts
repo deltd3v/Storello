@@ -24,18 +24,9 @@ export class AuthGuard implements CanActivate {
 
 		const isLoggedIn = !!user;
 
-		if (isLoggedIn) {
-			localStorage.setItem('user', JSON.stringify(user));
-			return isLoggedIn;
-		}
-
 		if (!isLoggedIn) {
-			user = JSON.parse(localStorage.getItem('user')!);
-
-			if (!user) {
-				this.snackService.showAuthRequiredError();
-				return false;
-			}
+			this.snackService.showAuthRequiredError();
+			return false;
 		}
 
 		return isLoggedIn;

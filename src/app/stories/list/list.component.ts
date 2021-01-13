@@ -25,7 +25,5 @@ export class ListComponent implements OnInit {
 		this.stories = this.store
 			.collection('stories')
 			.valueChanges({idField: 'id'}) as Stories;
-
-	 
 	}
 }

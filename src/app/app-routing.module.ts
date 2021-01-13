@@ -11,7 +11,7 @@ const routes: Routes = [
 			import('./user/user.module').then((_) => _.UserModule),
 	}, // THISSS !!. THIS IS CALLED WINNING by code-splitting ftw
 	{
-		path: 'board',
+		path: 'boards',
 		canActivate: [AuthGuard],
 		loadChildren: () =>
 			import('./boards/boards.module').then((_) => _.BoardsModule),
@@ -26,8 +26,8 @@ const routes: Routes = [
 @NgModule({
 	imports: [
 		RouterModule.forRoot(routes, {
-    initialNavigation: 'enabled',
-}),
+			initialNavigation: 'enabled',
+		}),
 	],
 	exports: [RouterModule],
 })

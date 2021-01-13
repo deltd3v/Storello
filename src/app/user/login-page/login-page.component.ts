@@ -9,6 +9,5 @@ import {AngularFireAuth} from '@angular/fire/auth';
 export class LoginPageComponent implements OnInit {
 	constructor(public angularFireAuth: AngularFireAuth) {}
 
-	ngOnInit(): void {
-	}
+	ngOnInit(): void {}
 }
