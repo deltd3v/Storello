@@ -10,6 +10,5 @@ export class LoginPageComponent implements OnInit {
 	constructor(public angularFireAuth: AngularFireAuth) {}
 
 	ngOnInit(): void {
-		console.log(this.angularFireAuth);
 	}
 }

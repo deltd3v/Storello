@@ -28,6 +28,30 @@
 
 			<a
 				mat-list-item
+				routerLink="/board"
+				(click)="drawer.close()"
+				style="display: flex; align-items: center"
+			>
+				<mat-icon style="margin: 0 0.5rem" aria-label="board-icon"
+					>view_agenda</mat-icon
+				>
+				<span>Board</span>
+			</a>
+
+			<a
+				mat-list-item
+				routerLink="/stories"
+				(click)="drawer.close()"
+				style="display: flex; align-items: center"
+			>
+				<mat-icon style="margin: 0 0.5rem" aria-label="stories-icon"
+					>amp_stories</mat-icon
+				>
+				<span>Stories</span>
+			</a>
+
+			<a
+				mat-list-item
 				*ngIf="!(angularFireAuth.authState | async)"
 				routerLink="/login"
 				(click)="drawer.close()"
@@ -50,30 +74,6 @@
 					>exit_to_app</mat-icon
 				>
 				<span> Log Out </span>
-			</a>
-
-			<a
-				mat-list-item
-				routerLink="/board"
-				(click)="drawer.close()"
-				style="display: flex; align-items: center"
-			>
-				<mat-icon style="margin: 0 0.5rem" aria-label="board-icon"
-					>view_agenda</mat-icon
-				>
-				<span>Board</span>
-			</a>
-
-			<a
-				mat-list-item
-				routerLink="/stories"
-				(click)="drawer.close()"
-				style="display: flex; align-items: center"
-			>
-				<mat-icon style="margin: 0 0.5rem" aria-label="stories-icon"
-					>amp_stories</mat-icon
-				>
-				<span> Stories</span>
 			</a>
 		</mat-nav-list>
 	</mat-sidenav>
@@ -103,6 +103,19 @@
 			<span class="fill-space"></span>
 
 			<div *ngIf="!(handset$ | async)">
+				<a mat-button routerLink="/board">
+					<mat-icon style="margin: 0 0.5rem" aria-label="board-icon"
+						>view_agenda</mat-icon
+					>
+					<span>Board</span>
+				</a>
+
+				<a mat-button routerLink="/stories">
+					<mat-icon style="margin: 0 0.5rem" aria-label="stories-icon"
+						>amp_stories</mat-icon
+					>
+					<span>Stories</span>
+				</a>
 				<a
 					mat-button
 					routerLink="/login"
@@ -124,20 +137,6 @@
 						>exit_to_app</mat-icon
 					>
 					<span>Log Out</span>
-				</a>
-
-				<a mat-button routerLink="/board">
-					<mat-icon style="margin: 0 0.5rem" aria-label="board-icon"
-						>view_agenda</mat-icon
-					>
-					<span>Board</span>
-				</a>
-
-				<a mat-button routerLink="/stories">
-					<mat-icon style="margin: 0 0.5rem" aria-label="stories-icon"
-						>amp_stories</mat-icon
-					>
-					<span>Stories</span>
 				</a>
 			</div>
 

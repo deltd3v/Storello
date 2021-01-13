@@ -1,0 +1,19 @@
+<h2>Stories</h2>
+
+<mat-nav-list role="list">
+	<h3 mat-subheader>Stories by our users</h3>
+
+	<mat-list-item
+		*ngFor="let story of stories | async"
+		[routerLink]="story.id"
+		role="listitem"
+		class="icon-text v-align-middle"
+	>
+		<mat-icon fxLayoutAlign="center" mat-list-icon class="v-align-middle"
+			>account_box</mat-icon
+		>
+		<span>
+			{{ story.name }}
+		</span>
+	</mat-list-item>
+</mat-nav-list>

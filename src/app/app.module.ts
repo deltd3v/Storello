@@ -16,7 +16,7 @@ console.clear();
 	declarations: [AppComponent, HomePageComponent],
 	imports: [
 		SharedModule,
-		BrowserModule,
+		BrowserModule.withServerTransition({appId: 'serverApp'}),
 		AppRoutingModule,
 		AngularFireAuthModule,
 		AngularFirestoreModule,

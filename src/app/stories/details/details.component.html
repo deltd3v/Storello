@@ -1,0 +1,13 @@
+<h1>Detail Page</h1>
+<mat-card *ngIf="story | async as s">
+	<mat-card-header>
+		<mat-card-title>{{ s.name }}</mat-card-title>
+	</mat-card-header>
+
+	<img mat-card-image [src]="s.imgUrl" />
+	<mat-card-content>
+		<p>
+			{{ s.story }}
+		</p>
+	</mat-card-content>
+</mat-card>

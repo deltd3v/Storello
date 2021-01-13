@@ -1,7 +1,5 @@
 # Storello
 
+Storello is a productivity board similar to trello.
 
-### Usage
-Create a firebase web-app-project
-copy the fireBase config variable into src/environments/fireBase.ts
-
+This project is my attempt of implementing the drag and drop functionality using an enterprise framework @angular and a backend-as-a-service(baas) solution fireBase. 

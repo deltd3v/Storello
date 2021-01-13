@@ -15,11 +15,20 @@ const routes: Routes = [
 		canActivate: [AuthGuard],
 		loadChildren: () =>
 			import('./boards/boards.module').then((_) => _.BoardsModule),
-	}, // THISSS !!. THIS IS CALLED WINNING by code-splitting ftw
+	},
+	{
+		path: 'stories',
+		loadChildren: () =>
+			import('./stories/stories.module').then((_) => _.StoriesModule),
+	},
 ];
 
 @NgModule({
-	imports: [RouterModule.forRoot(routes)],
+	imports: [
+		RouterModule.forRoot(routes, {
+    initialNavigation: 'enabled',
+}),
+	],
 	exports: [RouterModule],
 })
 export class AppRoutingModule {}
