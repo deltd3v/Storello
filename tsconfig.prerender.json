@@ -1,9 +1,0 @@
-{
-	"extends": "./tsconfig.json",
-	"compilerOptions": {
-		"outDir": "./dist/storello-board/server",
-		"module": "commonjs",
-		"types": ["node"]
-	},
-	"files": ["prerender.ts"]
-}
