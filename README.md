@@ -1,4 +1,4 @@
-# Storello
+### Storello
 
 Storello is a productivity board similar to trello.
 
@@ -22,4 +22,4 @@ Check out the pre-rendered version here
 
 [x] - pre-rendered stories(firebase hosting) & server-side-rendered stories(gcp)
 
-##### 2020 - delt - :=)
+#### 2020 - delt - :=)
