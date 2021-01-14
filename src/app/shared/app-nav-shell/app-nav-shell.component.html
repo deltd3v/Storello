@@ -28,14 +28,14 @@
 
 			<a
 				mat-list-item
-				routerLink="/board"
+				routerLink="/boards"
 				(click)="drawer.close()"
 				style="display: flex; align-items: center"
 			>
 				<mat-icon style="margin: 0 0.5rem" aria-label="board-icon"
 					>view_agenda</mat-icon
 				>
-				<span>Board</span>
+				<span>Boards</span>
 			</a>
 
 			<a
@@ -103,11 +103,11 @@
 			<span class="fill-space"></span>
 
 			<div *ngIf="!(handset$ | async)">
-				<a mat-button routerLink="/board">
+				<a mat-button routerLink="/boards">
 					<mat-icon style="margin: 0 0.5rem" aria-label="board-icon"
 						>view_agenda</mat-icon
 					>
-					<span>Board</span>
+					<span>Boards</span>
 				</a>
 
 				<a mat-button routerLink="/stories">

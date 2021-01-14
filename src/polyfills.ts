@@ -60,3 +60,13 @@ import 'zone.js/dist/zone'; // Included with Angular CLI.
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
+
+/***************************************************************************************************
+ * E.T.C...
+ */
+import '@ungap/global-this';
+import 'core-js/features/object/assign';
+import 'core-js/features/string/repeat';
+import 'core-js/features/string/pad-start';
+import 'core-js/features/string/pad-end';
+import 'core-js/features/global-this';

@@ -1,3 +1,4 @@
+import '@ungap/global-this';
 import 'zone.js/dist/zone-node';
 
 import {ngExpressEngine} from '@nguniversal/express-engine';
