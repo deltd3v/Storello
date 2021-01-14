@@ -1,6 +1,6 @@
 <main class="log-in-screen">
 	<div *ngIf="!(angularFireAuth.authState | async)">
-		<h1 style="margin: 1.5rem 0rem">Login</h1>
+		<h1 style="margin: .8rem 0rem">Login</h1>
 
 		<button mat-raised-button appGoogleSignIn>
 			<img
@@ -15,6 +15,8 @@
 
 		<app-login-email></app-login-email>
 	</div>
+	
+	<h3 style="margin:0.8rem 0rem">Navigate to boards, by clicking on the tab in the menu bar</h3>
 
 	<div class="log-out" *ngIf="angularFireAuth.authState | async as user">
 		<pre>Signed in with google</pre>
